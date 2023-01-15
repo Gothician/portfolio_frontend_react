@@ -49,13 +49,13 @@ const Skills = () => {
         </motion.div>
         <motion.div className="app__skills-exp">
           {experiences?.map((experience) => (
-            <motion.div className="app__skills-exp-item" key={experience?.year}>
+            <motion.div className="app__skills-exp-item" key={experience.year}>
               <div className="app__skills-exp-year">
                 <p className="bold-text">{experience?.year}</p>
               </div>
               <motion.div className="app__skills-exp-works">
                 {experience.works.map((work) => (
-                  <>
+                  <React.Fragment key={work.name}>
                     <motion.div
                       id={`${work.name}-work-tooltip`}
                       data-tooltip-content={work.desc}
@@ -64,7 +64,6 @@ const Skills = () => {
                       className="app__skills-exp-work"
                       data-tip
                       data-for={work.name}
-                      key={work.name}
                     >
                       <h4 className="bold-text">{work.name}</h4>
                       <p className="p-text">{work.company}</p>
@@ -73,7 +72,7 @@ const Skills = () => {
                       className="skills-tooltip"
                       anchorId={`${work.name}-work-tooltip`}
                     />
-                  </>
+                  </React.Fragment>
                 ))}
               </motion.div>
             </motion.div>
